@@ -27,7 +27,7 @@ def update_video(charachter):
 if "alphabet" not in st.session_state:
     st.session_state["alphabet"] = 0
 
-ALPHABET_LIST = ["A", "B", "C", "D", "E", "F","G","H", "I","J","K" "L", "O", "R", "U", "Y"]
+ALPHABET_LIST = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y']
 NUM_ALPHABETS = len(ALPHABET_LIST)
 
 # Element struction
@@ -60,7 +60,7 @@ while True and st.session_state.page == "learnpage":
             f"Learning Alphabet : {ALPHABET_LIST[st.session_state['alphabet']]}"
         )
 
-        frame, prob = prediction_model(frame,st.session_state["alphabet"])
+        frame, prob = prediction_model(frame, ALPHABET_LIST[st.session_state["alphabet"]])
         frame = cv2.resize(
             frame, (500, 500), fx=0.1, fy=0.1, interpolation=cv2.INTER_CUBIC
         )
@@ -77,7 +77,7 @@ while True and st.session_state.page == "learnpage":
 
             video_placeholder.empty()
 
-            st.session_state["alphabet"] = ( st.session_state["alphabet"] + 1 ) % NUM_ALPHABETS
+            st.session_state["alphabet"] = ( st.session_state["alphabet"] + 1 ) % NUM_ALPHABETS 
 
             time.sleep(2)
 

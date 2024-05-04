@@ -44,7 +44,18 @@ if "word" not in st.session_state:
     st.session_state['word'] = 0
     st.session_state['index'] = 0
 
-WORD_LIST = ["ABC"]
+WORD_LIST = [
+    "CODE",
+    "DATA",
+    "LEARN",
+    "TEST",
+    "IDEA",
+    "PYTHON",
+    "HAPPY",
+    "SMART",
+    "QUICK",
+    "BRAIN"
+]
 NUM_WORD = len(WORD_LIST)
 
 # Element structure
@@ -77,10 +88,11 @@ while True and st.session_state["page"] == "wordpage":
         title_placeholder.header("Learn Word")
         current_word_index = st.session_state["word"]
 
+
+
         frame, prob = prediction_model(
             frame,
-            ord(WORD_LIST[st.session_state["word"]][st.session_state['index']])
-            - ord("A"),
+            WORD_LIST[st.session_state["word"]][st.session_state['index']]
         )
 
         frame = cv2.resize(

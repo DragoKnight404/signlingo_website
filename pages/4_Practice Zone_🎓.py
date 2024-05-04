@@ -14,13 +14,14 @@ if "page" not in st.session_state or st.session_state["page"] != "testpage":
 st.markdown(page_setup(), unsafe_allow_html=True)
 st.markdown(page_with_webcam_video(), unsafe_allow_html=True)
 
-ALPHABET_LIST = [
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-]
+# ALPHABET_LIST = [
+#     "A",
+#     "B",
+#     "C",
+#     "D",
+#     "E",
+# ]
+ALPHABET_LIST = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y']
 NUM_ALPHABETS = len(ALPHABET_LIST)
 
 if "test" not in st.session_state:
@@ -57,7 +58,7 @@ while True and st.session_state["page"] == "testpage":
         charachter = ALPHABET_LIST[st.session_state["test"]]
         charachter_placeholder.markdown('<div class="letterToFind">{}</div>'.format(charachter), unsafe_allow_html=True)
 
-        frame, prob = prediction_model(frame, st.session_state["test"])
+        frame, prob = prediction_model(frame, ALPHABET_LIST[st.session_state["test"]])
         frame = cv2.resize(
             frame, (500, 500), fx=0.1, fy=0.1, interpolation=cv2.INTER_CUBIC
         )
